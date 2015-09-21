@@ -50,7 +50,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\MovieShopContext.cs" />
+    <Compile Include="Context\MovieShopContextDB.cs" />
+    <Compile Include="DomainModel\Adress.cs" />
+    <Compile Include="DomainModel\Customer.cs" />
+    <Compile Include="DomainModel\Genre.cs" />
     <Compile Include="DomainModel\Movie.cs" />
+    <Compile Include="DomainModel\Order.cs" />
     <Compile Include="Facade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\MovieRepository.cs" />
@@ -58,6 +63,12 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Movieshop\Movieshop.csproj">
+      <Project>{8dd3b2a8-3b4a-41b8-ad24-cad88138a462}</Project>
+      <Name>Movieshop</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
