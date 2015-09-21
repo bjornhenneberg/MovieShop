@@ -6,6 +6,8 @@ using System.Web.Mvc;
 
 namespace Movieshop.Controllers
 {
+    //Everything  is awesome12 
+    //Ost er awesome
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -15,7 +17,7 @@ namespace Movieshop.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Hello Lars.";
 
             return View();
         }
