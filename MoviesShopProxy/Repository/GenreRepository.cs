@@ -8,68 +8,64 @@ using System.Threading.Tasks;
 
 namespace MoviesShopProxy.Repository
 {
-    public class MovieRepository
+    public class GenreRepository
     {
-        public void Add(Movie movie) {
+        public void Add(Genre genre)
+        {
             using (var ctx = new MovieShopContextDB())
             {
                 //Create the queries
-                ctx.Movies.Add(movie);
+                ctx.Genres.Add(genre);
                 //Execute the queries
                 ctx.SaveChanges();
             }
         }
 
-        public List<Movie> ReadAll()
+        public List<Genre> ReadAll()
         {
             using (var ctx = new MovieShopContextDB())
             {
-                return ctx.Movies.ToList();
+                return ctx.Genres.ToList();
             }
         }
 
-        public Movie Read(int movieID)
+        public Genre Read(int genreID)
         {
             using (var ctx = new MovieShopContextDB())
             {
-                return ctx.Movies.ToList().FirstOrDefault(item => item.Id == movieID);
+                return ctx.Genres.ToList().FirstOrDefault(item => item.Id == genreID);
             }
         }
 
-        public void Update(Movie movie)
+        public void Update(Genre genre)
         {
             using (var ctx = new MovieShopContextDB())
             {
-                foreach (var movieDB in ctx.Movies.ToList())
+                foreach (var genreDB in ctx.Genres.ToList())
                 {
-                    if(movie.Id == movieDB.Id)
+                    if (genre.Id == genreDB.Id)
                     {
-                        movieDB.genre = movie.genre;
-                        movieDB.imageURL = movie.imageURL;
-                        movieDB.Price = movie.Price;
-                        movieDB.Title = movie.Title;
-                        movieDB.trailerURL = movie.trailerURL;
-                        movieDB.Year = movie.Year;
+                        genreDB.Name = genre.Name;
+                        genreDB.Movies = genre.Movies;
                         ctx.SaveChanges();
                     }
                 }
             }
         }
 
-        public void Delete(Movie movie)
+        public void Delete(Genre genre)
         {
             using (var ctx = new MovieShopContextDB())
             {
-                foreach (var movieDB in ctx.Movies.ToList())
+                foreach (var genreDB in ctx.Genres.ToList())
                 {
-                    if (movie.Id == movieDB.Id)
+                    if (genre.Id == genreDB.Id)
                     {
-                        ctx.Movies.Remove(movieDB);
+                        ctx.Genres.Remove(genreDB);
                         ctx.SaveChanges();
                     }
                 }
             }
         }
-
     }
 }
