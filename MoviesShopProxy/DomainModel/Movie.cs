@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MoviesShopProxy.DomainModel
 {
-    [Table("MovieIsOverrated")]
+    [Table("Movie")]
     public class Movie
     {
         [Key]
