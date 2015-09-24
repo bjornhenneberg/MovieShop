@@ -49,7 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context\MovieShopContext.cs" />
     <Compile Include="Context\MovieShopContextDB.cs" />
     <Compile Include="DomainModel\Adress.cs" />
     <Compile Include="DomainModel\Customer.cs" />
