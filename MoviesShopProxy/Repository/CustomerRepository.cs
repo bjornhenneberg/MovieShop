@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MoviesShopProxy.Repository
 {
-    class CustomerRepository
+    public class CustomerRepository
     {
         public void Add(Customer customer)
         {

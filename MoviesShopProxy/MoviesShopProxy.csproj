@@ -61,6 +61,7 @@
     <Compile Include="Repository\CustomerRepository.cs" />
     <Compile Include="Repository\GenreRepository.cs" />
     <Compile Include="Repository\MovieRepository.cs" />
+    <Compile Include="Repository\OrderRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

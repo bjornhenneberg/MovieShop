@@ -9,8 +9,9 @@ using System.Threading.Tasks;
 namespace MoviesShopProxy.DomainModel
 {
     [Table("Customer")]
-    class Customer
+    public class Customer
     {
+
         [Key]
         public int Id { get; set; }
         public string FirstName { get; set; }

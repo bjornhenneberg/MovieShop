@@ -1,4 +1,5 @@
-﻿using MoviesShopProxy.DomainModel;
+﻿using MoviesShopProxy.Context;
+using MoviesShopProxy.DomainModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace MoviesShopProxy.Repository
 {
-    class OrdersRepository
+    public class OrderRepository
     {
         public void Add(Order order)
         {
             using (var ctx = new MovieShopContextDB())
             {
                 //Create the queries
-                ctx.Order.Add(order);
+                ctx.Orders.Add(order);
                 //Execute the queries
                 ctx.SaveChanges();
             }
@@ -32,7 +33,7 @@ namespace MoviesShopProxy.Repository
         {
             using (var ctx = new MovieShopContextDB())
             {
-                return ctx.Order.ToList().FirstOrDefault(item => item.Id == orderID);
+                return ctx.Orders.ToList().FirstOrDefault(item => item.Id == orderID);
             }
         }
 
@@ -70,4 +71,4 @@ namespace MoviesShopProxy.Repository
 
     }
 }
-}
+
