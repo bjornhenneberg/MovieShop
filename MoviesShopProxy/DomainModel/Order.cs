@@ -15,7 +15,7 @@ namespace MoviesShopProxy.DomainModel
         [Key]
         public int Id { get; set; }
         public Customer Customer { get; set; }
-        public List<Movie> Movies { get; set; }
+        public Movie Movies { get; set; }
         public DateTime Date { get; set; }
     }
 }

@@ -14,7 +14,7 @@ namespace MoviesShopProxy.DomainModel
 
 
         [Key]
-        public uint Id { get; set; }
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Adress Adress { get; set; }

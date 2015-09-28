@@ -12,9 +12,10 @@ namespace MoviesShopProxy.DomainModel
     public class Movie
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Title { get; set; }
-        public DateTime Year { get; set; }
+        public int Year { get; set; }
         public double Price { get; set; }
         public string imageURL { get; set; }
         public string trailerURL { get; set; }
