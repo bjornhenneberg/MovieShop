@@ -12,5 +12,6 @@ namespace Movieshop.Models.ViewModels
         public List<Customer> customers { get; set; }
         public List<Movie> movies { get; set; }
 
+
     }
 }
