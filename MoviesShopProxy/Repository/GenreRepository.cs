@@ -33,7 +33,7 @@ namespace MoviesShopProxy.Repository
         {
             using (var ctx = new MovieShopContextDB())
             {
-                return ctx.Genres.ToList().FirstOrDefault(item => item.Id == genreID);
+                return ctx.Genres.FirstOrDefault(item => item.Id == genreID);
             }
         }
 
@@ -41,15 +41,10 @@ namespace MoviesShopProxy.Repository
         {
             using (var ctx = new MovieShopContextDB())
             {
-                foreach (var genreDB in ctx.Genres.ToList())
-                {
-                    if (genre.Id == genreDB.Id)
-                    {
-                        genreDB.Name = genre.Name;
-                        genreDB.Movies = genre.Movies;
-                        ctx.SaveChanges();
-                    }
-                }
+                var genreDB = Read(genre.Id);
+                genreDB.Name = genre.Name;
+                genreDB.Movies = genre.Movies;
+                ctx.SaveChanges();
             }
         }
 
@@ -57,14 +52,9 @@ namespace MoviesShopProxy.Repository
         {
             using (var ctx = new MovieShopContextDB())
             {
-                foreach (var genreDB in ctx.Genres.ToList())
-                {
-                    if (genre.Id == genreDB.Id)
-                    {
-                        ctx.Genres.Remove(genreDB);
-                        ctx.SaveChanges();
-                    }
-                }
+                var genreDB = Read(genre.Id);
+                ctx.Genres.Remove(genreDB);
+                ctx.SaveChanges();
             }
         }
     }

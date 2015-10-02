@@ -51,7 +51,7 @@ namespace Movieshop.Controllers
         }
 
         [HttpPost]
-        public ActionResult Update([Bind(Include="Id,ImageUrl,TrailerUrl")] Movie movie)
+        public ActionResult Update( Movie movie)
         {
             movie.Genre = facade.GetGenreRepository().Read(movie.Genre.Id);
             facade.GetMovieRepository().Update(movie);

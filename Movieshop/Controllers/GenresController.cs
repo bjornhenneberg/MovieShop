@@ -24,18 +24,8 @@ namespace Movieshop.Controllers
             return View(genres);
         }
 
-        // GET: Genres/Details/5
-        public ActionResult Details(int id)
-        {
-            Genre genre = facade.GetGenreRepository().Read(id);
-            if (genre == null)
-            {
-                return HttpNotFound();
-            }
-            return View(genre);
-        }
-
         // GET: Genres/Create
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
@@ -53,18 +43,14 @@ namespace Movieshop.Controllers
                 facade.GetGenreRepository().Add(genre);
                 return RedirectToAction("Index");
             }
-
             return View(genre);
         }
 
         // GET: Genres/Edit/5
+        [HttpGet]
         public ActionResult Edit(int id)
         {
             Genre genre = facade.GetGenreRepository().Read(id);
-            if (genre == null)
-            {
-                return HttpNotFound();
-            }
             return View(genre);
         }
 
