@@ -1,4 +1,5 @@
-﻿using MoviesShopProxy;
+﻿using Movieshop.Models.ViewModels;
+using MoviesShopProxy;
 using MoviesShopProxy.DomainModel;
 using System;
 using System.Collections.Generic;
@@ -21,26 +22,39 @@ namespace Movieshop.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            MovieViewModel viewModel = new MovieViewModel()
+            {
+                Genres = facade.GetGenreRepository().ReadAll().ToList()
+            };
+
+            return View(viewModel);
         }
 
         [HttpPost]
         public ActionResult Create(Movie movie)
         {
+            movie.genre = facade.GetGenreRepository().Read(movie.genre.Id);
+
             facade.GetMovieRepository().Add(movie);
             return Redirect("Index");
         }
 
         [HttpGet]
-        public ActionResult Update(int id)
+        public ActionResult Update(int Id)
         {
-            Movie movie = facade.GetMovieRepository().Read(id);
-            return View(movie);
+            MovieViewModel viewModel = new MovieViewModel()
+            {
+                movie = facade.GetMovieRepository().Read(Id),
+                Genres = facade.GetGenreRepository().ReadAll().ToList()
+            };
+
+            return View(viewModel);
         }
 
         [HttpPost]
         public ActionResult Update(Movie movie)
         {
+            movie.genre = facade.GetGenreRepository().Read(movie.genre.Id);
             facade.GetMovieRepository().Update(movie);
             return Redirect("~/Movies/Index");
         }

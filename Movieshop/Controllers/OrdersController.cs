@@ -18,9 +18,12 @@ namespace Movieshop.Controllers
         Facade facade = new Facade();
 
         // GET: Orders
-        public ActionResult Index()
+        public ActionResult Index(OrderViewModel model)
         {
-            return View(facade.GetOrderRepository().ReadAll().ToList());
+            model.orders = facade.GetOrderRepository().ReadAll();
+            model.customers = facade.GetCustomerRepository().ReadAll();
+            model.movies = facade.GetMovieRepository().ReadAll();
+            return View(model);
         }
 
         // GET: Orders/Details/5

@@ -24,7 +24,7 @@ namespace MoviesShopProxy.Repository
         {
             using (var ctx = new MovieShopContextDB())
             {
-                return ctx.Movies.ToList();
+                return ctx.Movies.Include("Genre").ToList();
             }
         }
 
@@ -32,7 +32,7 @@ namespace MoviesShopProxy.Repository
         {
             using (var ctx = new MovieShopContextDB())
             {
-                return ctx.Movies.ToList().FirstOrDefault(item => item.Id == movieID);
+                return ctx.Movies.FirstOrDefault(item => item.Id == movieID);
             }
         }
 
@@ -44,7 +44,7 @@ namespace MoviesShopProxy.Repository
                 {
                     if(movie.Id == movieDB.Id)
                     {
-                        movieDB.genre = movie.genre;
+                        movieDB.genre.Id = movie.genre.Id;
                         movieDB.imageURL = movie.imageURL;
                         movieDB.Price = movie.Price;
                         movieDB.Title = movie.Title;

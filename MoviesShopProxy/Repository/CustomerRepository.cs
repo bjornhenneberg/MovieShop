@@ -25,7 +25,7 @@ namespace MoviesShopProxy.Repository
         {
             using (var ctx = new MovieShopContextDB())
             {
-                return ctx.Customers.ToList();
+                return ctx.Customers.Include("Adress").ToList();
             }
         }
 
