@@ -33,7 +33,7 @@ namespace MoviesShopProxy.Repository
         {
             using (var ctx = new MovieShopContextDB())
             {
-                return ctx.Customers.ToList().FirstOrDefault(item => item.Id == customerID);
+                return ctx.Customers.FirstOrDefault(item => item.Id == customerID);
             }
         }
 
@@ -41,17 +41,13 @@ namespace MoviesShopProxy.Repository
         {
             using (var ctx = new MovieShopContextDB())
             {
-                foreach (var customerDB in ctx.Customers.ToList())
-                {
-                    if (customer.Id == customerDB.Id)
-                    {
-                        customerDB.FirstName = customer.FirstName;
-                        customerDB.LastName = customer.LastName;
-                        customerDB.Email = customer.Email;
-                        customerDB.Adress = customer.Adress;
-                        ctx.SaveChanges();
-                    }
-                }
+                var customerDB = ctx.Customers.FirstOrDefault(item => item.Id == customer.Id);
+                customerDB.FirstName = customer.FirstName;
+                customerDB.LastName = customer.LastName;
+                customerDB.Email = customer.Email;
+                customerDB.Adress = customer.Adress;
+                ctx.SaveChanges();
+               
             }
         }
 
