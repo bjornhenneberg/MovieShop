@@ -18,11 +18,17 @@ namespace MovieShopUser.Controllers
             return View(facade.GetMovieRepository().ReadAll());
         }
 
+        [HttpGet]
         public ActionResult Buy(int id)
         {
             return View(id);
         }
 
+        [HttpPost]
+        public ActionResult Buy()
+        {
+            return View();
+        }
         public ActionResult Info(int id)
         {
             return View(facade.GetMovieRepository().Read(id));

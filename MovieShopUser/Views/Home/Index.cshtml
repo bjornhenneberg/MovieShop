@@ -50,6 +50,7 @@
         z-index: 9999;
         
 }
+   
 </style>
 
 <body>
@@ -58,7 +59,7 @@
         @foreach (var item in Model)
         {
             <div class="col-md-3">
-            <a href="@Url.Action("Info","Home",new { id = item.Id })" id="moviePoster" style="background-image:url('@item.imageURL');"></a>
+            <a href="@Url.Action("Info","Home",new { id = item.Id })"><img id="moviePoster" src="@item.imageURL"/></a>
             </div>
         }
      </div>
