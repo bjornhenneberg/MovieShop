@@ -13,6 +13,7 @@ namespace Movieshop.Controllers
     {
         private Facade facade = new Facade();
         // GET: Movies
+        [HttpGet]
         public ActionResult Index()
         {
             List<Movie> movies = facade.GetMovieRepository().ReadAll();

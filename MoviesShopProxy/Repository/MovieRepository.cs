@@ -28,11 +28,11 @@ namespace MoviesShopProxy.Repository
             }
         }
 
-        public Movie Read(int movieID)
+        public Movie Read(int movieId)
         {
             using (var ctx = new MovieShopContextDB())
             {
-                return ctx.Movies.FirstOrDefault(item => item.Id == movieID);
+                return ctx.Movies.FirstOrDefault(item => item.Id == movieId);
             }
         }
 
@@ -40,19 +40,14 @@ namespace MoviesShopProxy.Repository
         {
             using (var ctx = new MovieShopContextDB())
             {
-                foreach (var movieDB in ctx.Movies.ToList())
-                {
-                    if(movie.Id == movieDB.Id)
-                    {
-                        movieDB.Genre = movie.Genre;
-                        movieDB.imageURL = movie.imageURL;
-                        movieDB.Price = movie.Price;
-                        movieDB.Title = movie.Title;
-                        movieDB.trailerURL = movie.trailerURL;
-                        movieDB.Year = movie.Year;
-                        ctx.SaveChanges();
-                    }
-                }
+                var movieDB = ctx.Movies.FirstOrDefault(item => item.Id == movie.Id);
+                movieDB.Genre = movie.Genre;
+                movieDB.imageURL = movie.imageURL;
+                movieDB.Price = movie.Price;
+                movieDB.Title = movie.Title;
+                movieDB.trailerURL = movie.trailerURL;
+                movieDB.Year = movie.Year;
+                ctx.SaveChanges();
             }
         }
 
@@ -60,14 +55,9 @@ namespace MoviesShopProxy.Repository
         {
             using (var ctx = new MovieShopContextDB())
             {
-                foreach (var movieDB in ctx.Movies.ToList())
-                {
-                    if (movie.Id == movieDB.Id)
-                    {
-                        ctx.Movies.Remove(movieDB);
-                        ctx.SaveChanges();
-                    }
-                }
+                var movieDB = ctx.Movies.FirstOrDefault(item => item.Id == movie.Id);
+                ctx.Movies.Remove(movieDB);
+                ctx.SaveChanges();
             }
         }
 
