@@ -44,7 +44,7 @@ namespace MoviesShopProxy.Repository
                 {
                     if(movie.Id == movieDB.Id)
                     {
-                        movieDB.genre.Id = movie.genre.Id;
+                        movieDB.Genre = movie.Genre;
                         movieDB.imageURL = movie.imageURL;
                         movieDB.Price = movie.Price;
                         movieDB.Title = movie.Title;

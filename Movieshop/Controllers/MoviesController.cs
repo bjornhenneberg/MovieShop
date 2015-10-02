@@ -33,7 +33,7 @@ namespace Movieshop.Controllers
         [HttpPost]
         public ActionResult Create(Movie movie)
         {
-            movie.genre = facade.GetGenreRepository().Read(movie.genre.Id);
+            movie.Genre = facade.GetGenreRepository().Read(movie.Genre.Id);
 
             facade.GetMovieRepository().Add(movie);
             return Redirect("Index");
@@ -44,17 +44,16 @@ namespace Movieshop.Controllers
         {
             MovieViewModel viewModel = new MovieViewModel()
             {
-                movie = facade.GetMovieRepository().Read(Id),
-                Genres = facade.GetGenreRepository().ReadAll().ToList()
+                Movie = facade.GetMovieRepository().Read(Id),
+                Genres = facade.GetGenreRepository().ReadAll()
             };
-
             return View(viewModel);
         }
 
         [HttpPost]
-        public ActionResult Update(Movie movie)
+        public ActionResult Update([Bind(Include="Id,ImageUrl,TrailerUrl")] Movie movie)
         {
-            movie.genre = facade.GetGenreRepository().Read(movie.genre.Id);
+            movie.Genre = facade.GetGenreRepository().Read(movie.Genre.Id);
             facade.GetMovieRepository().Update(movie);
             return Redirect("~/Movies/Index");
         }
