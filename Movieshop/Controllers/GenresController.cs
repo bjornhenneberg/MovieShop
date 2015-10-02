@@ -50,8 +50,8 @@ namespace Movieshop.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            Genre genre = facade.GetGenreRepository().Read(id);
-            return View(genre);
+            Genre genreT = facade.GetGenreRepository().Read(id);
+            return View(genreT);
         }
 
         // POST: Genres/Edit/5
@@ -61,11 +61,10 @@ namespace Movieshop.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Genre genre)
         {
-            if (ModelState.IsValid)
-            {
+            
                 facade.GetGenreRepository().Update(genre);
                 return RedirectToAction("Index");
-            }
+            
             return View(genre);
         }
 
