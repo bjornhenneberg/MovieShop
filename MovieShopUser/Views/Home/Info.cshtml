@@ -1,0 +1,78 @@
+﻿@model MoviesShopProxy.DomainModel.Movie
+
+@{
+    ViewBag.Title = "Info";
+}
+
+<style>
+
+    body{
+        z-index: 1;
+        color: black;
+        font-size:larger;
+        align-content:center;
+    }
+
+    .table tr td {
+        border-top: 1px solid black !important;
+    }
+
+    .background-image {
+        position:fixed;
+        left:-15px;
+        right: 15px;
+        z-index: -1;
+        
+        display: block;
+        background-image: url('http://orig11.deviantart.net/20eb/f/2015/030/6/f/_minflat__dark_material_design_wallpaper__4k__by_dakoder-d8fjqzu.jpg');
+        width: 115%;
+        height: 130%;
+        
+        -webkit-filter: blur(10px);
+        -moz-filter: blur(10px);
+        -ms-filter: blur(10px);
+        filter: blur(10px);
+    }
+      
+    #tableInfo {
+          clear:both;
+    }
+
+</style>
+
+<div class="background-image"></div>
+<div class="content">
+    <h2>@Model.Title - @Model.Year</h2>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="img-responsive">
+                    <img class="img-responsive" src="@Model.imageURL" />
+                </div>
+            </div>
+       
+            <div class="col-sm-8">
+                <div class="embed-responsive embed-responsive-4by3">
+                    <iframe class="embed-responsive-item" src="@Model.trailerURL"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        
+
+        <div id="tableInfo">
+            <h3>Info</h3>
+
+            <div class="table-responsive">
+                <table class="table">
+                    <tr>
+                        <td class="col-md-3" style="font-size:large;">@Model.Title</td>
+                        <td class="col-md-3" style="font-size:large;">@Model.Year</td>
+                        <td class="col-md-3" style="font-size:large;">@Model.Price</td>
+                        <td class="col-md-3" style="text-align:right;">@Html.ActionLink("Buy", "Buy", "Home", new { id = Model.Id }, new { @class = "btn btn-default" })  @Html.ActionLink("Add to Cart", "AddToCart", "Home", new { id = Model.Id }, new { @class = "btn btn-default" }) </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
