@@ -55,17 +55,13 @@ namespace Movieshop.Controllers
         }
 
         // POST: Genres/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit(Genre genre)
         {
             
                 facade.GetGenreRepository().Update(genre);
                 return RedirectToAction("Index");
             
-            return View(genre);
         }
 
         // GET: Genres/Delete/5

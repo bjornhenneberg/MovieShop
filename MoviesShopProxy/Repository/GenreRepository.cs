@@ -41,7 +41,7 @@ namespace MoviesShopProxy.Repository
         {
             using (var ctx = new MovieShopContextDB())
             {
-                var genreDB = Read(genre.Id);
+                var genreDB = ctx.Genres.FirstOrDefault(item => item.Id == genre.Id);
                 genreDB.Name = genre.Name;
                 genreDB.Movies = genre.Movies;
                 ctx.SaveChanges();
