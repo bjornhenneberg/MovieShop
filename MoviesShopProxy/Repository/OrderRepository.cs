@@ -41,16 +41,13 @@ namespace MoviesShopProxy.Repository
         {
             using (var ctx = new MovieShopContextDB())
             {
-                foreach (var orderDB in ctx.Orders.ToList())
-                {
-                    if (order.Id == orderDB.Id)
-                    {
-                        orderDB.Customer = order.Customer;
-                        orderDB.Movies = order.Movies;
-                        orderDB.Date = order.Date;
-                        ctx.SaveChanges();
-                    }
-                }
+                var orderDB = ctx.Orders.ToList().FirstOrDefault(item => item.Id == order.Id);
+                orderDB.Customer = order.Customer;
+                orderDB.Movies = order.Movies;
+                orderDB.Date = order.Date;
+                ctx.SaveChanges();
+                    
+                
             }
         }
 
@@ -58,14 +55,10 @@ namespace MoviesShopProxy.Repository
         {
             using (var ctx = new MovieShopContextDB())
             {
-                foreach (var orderDB in ctx.Orders.ToList())
-                {
-                    if (order.Id == orderDB.Id)
-                    {
-                        ctx.Orders.Remove(orderDB);
-                        ctx.SaveChanges();
-                    }
-                }
+
+                var orderDB = ctx.Orders.ToList().FirstOrDefault(item => item.Id == order.Id);
+                ctx.Orders.Remove(orderDB);
+                ctx.SaveChanges();
             }
         }
 

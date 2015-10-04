@@ -8,11 +8,12 @@ namespace Movieshop.Models.ViewModels
 {
     public class MovieViewModel
     {
-        public Movie Movie { get; set; }
-        public List<Genre> Genres { get; set; }
         public MovieViewModel()
         {
             Genres = new List<Genre>();
         }
+        public Movie Movie { get; set; }
+        public List<Genre> Genres { get; set; }
+        
     }
 }

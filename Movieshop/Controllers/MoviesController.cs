@@ -52,10 +52,10 @@ namespace Movieshop.Controllers
         }
 
         [HttpPost]
-        public ActionResult Update( Movie movie)
+        public ActionResult Update( Movie Movie)
         {
-            movie.Genre = facade.GetGenreRepository().Read(movie.Genre.Id);
-            facade.GetMovieRepository().Update(movie);
+            Movie.Genre = facade.GetGenreRepository().Read(Movie.Genre.Id);
+            facade.GetMovieRepository().Update(Movie);
             return Redirect("~/Movies/Index");
         }
 

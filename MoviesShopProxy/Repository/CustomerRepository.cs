@@ -21,11 +21,15 @@ namespace MoviesShopProxy.Repository
             }
         }
 
-        public List<Customer> ReadAll()
+        public List<Customer> ReadAll(bool asc = true)
         {
             using (var ctx = new MovieShopContextDB())
             {
-                return ctx.Customers.Include("Adress").ToList();
+                if (asc)
+                {
+                    return ctx.Customers.Include("Adress").OrderBy(x => x.FirstName).ToList();
+                }
+                return ctx.Customers.Include("Adress").OrderByDescending(x => x.FirstName).ToList();
             }
         }
 
@@ -45,7 +49,11 @@ namespace MoviesShopProxy.Repository
                 customerDB.FirstName = customer.FirstName;
                 customerDB.LastName = customer.LastName;
                 customerDB.Email = customer.Email;
-                customerDB.Adress = customer.Adress;
+                customerDB.Adress.Id = customer.Adress.Id;
+                customerDB.Adress.StreetName = customer.Adress.StreetName;
+                customerDB.Adress.StreetNumber = customer.Adress.StreetNumber;
+                customerDB.Adress.Zipcode = customer.Adress.Zipcode;
+                customerDB.Adress.Country = customer.Adress.Country;
                 ctx.SaveChanges();
                
             }
@@ -55,14 +63,8 @@ namespace MoviesShopProxy.Repository
         {
             using (var ctx = new MovieShopContextDB())
             {
-                foreach (var customerDB in ctx.Customers.ToList())
-                {
-                    if (customer.Id == customerDB.Id)
-                    {
-                        ctx.Customers.Remove(customerDB);
-                        ctx.SaveChanges();
-                    }
-                }
+                var customerDB = ctx.Customers.FirstOrDefault(item => item.Id == customer.Id);
+                ctx.Customers.Remove(customerDB);
             }
         }
 
