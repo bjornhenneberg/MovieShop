@@ -8,11 +8,8 @@ namespace Movieshop.Models.ViewModels
 {
     public class CustomerViewModel
     {
-        public CustomerViewModel()
-        {
-            GetAddresses = new List<Adress>();
-        }
+        
         public Customer Customer { get; set; }
-        public List<Adress> GetAddresses { get; set; }
+        public Adress Address { get; set; }
     }
 }

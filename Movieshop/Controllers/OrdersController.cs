@@ -49,25 +49,14 @@ namespace Movieshop.Controllers
         [HttpPost]
         public ActionResult Create(Order order)
         {
-            if (ModelState.IsValid)
-            {
                 facade.GetOrderRepository().Add(order);
                 return RedirectToAction("Index");
-            }
-
-            return View(order);
         }
 
         // GET: Orders/Edit/5
         public ActionResult Edit(int id)
         {
             Order order = facade.GetOrderRepository().Read(id);
-            if (order == null)
-            {
-                return HttpNotFound();
-            }
-
-            
 
             return View(order);
         }
@@ -78,22 +67,14 @@ namespace Movieshop.Controllers
         [HttpPost]
         public ActionResult Edit(Order order)
         {
-            if (ModelState.IsValid)
-            {
                 facade.GetOrderRepository().Update(order);
                 return RedirectToAction("Index");
-            }
-            return View(order);
         }
 
         // GET: Orders/Delete/5
         public ActionResult Delete(int id)
         {
             Order order = facade.GetOrderRepository().Read(id);
-            if (order == null)
-            {
-                return HttpNotFound();
-            }
             return View(order);
         }
 

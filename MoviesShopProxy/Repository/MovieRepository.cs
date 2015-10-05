@@ -20,11 +20,15 @@ namespace MoviesShopProxy.Repository
             }
         }
 
-        public List<Movie> ReadAll()
+        public List<Movie> ReadAll(bool asc = true)
         {
             using (var ctx = new MovieShopContextDB())
             {
-                return ctx.Movies.Include("Genre").ToList();
+                if (asc)
+                {
+                    return ctx.Movies.Include("Genre").OrderBy(x => x.Title).ToList();
+                }
+                return ctx.Movies.Include("Genre").OrderByDescending(x => x.Title).ToList();
             }
         }
 
@@ -32,7 +36,7 @@ namespace MoviesShopProxy.Repository
         {
             using (var ctx = new MovieShopContextDB())
             {
-                return ctx.Movies.FirstOrDefault(item => item.Id == movieId);
+                return ctx.Movies.Include("Genre").FirstOrDefault(item => item.Id == movieId);
             }
         }
 

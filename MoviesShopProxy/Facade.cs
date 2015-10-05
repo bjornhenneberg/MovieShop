@@ -13,6 +13,7 @@ namespace MoviesShopProxy
         private GenreRepository genreRepo;
         private CustomerRepository customerRepo;
         private OrderRepository orderRepo;
+        private AddressRepository addressRepo;
 
         public MovieRepository GetMovieRepository()
         {
@@ -47,6 +48,15 @@ namespace MoviesShopProxy
                 orderRepo = new OrderRepository();
             }
             return orderRepo;
+        }
+
+        public AddressRepository GetAddressRepository()
+        {
+            if (addressRepo == null)
+            {
+                addressRepo = new AddressRepository();
+            }
+            return addressRepo;
         }
     }
 }

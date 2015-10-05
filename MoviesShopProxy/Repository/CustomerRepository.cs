@@ -37,7 +37,7 @@ namespace MoviesShopProxy.Repository
         {
             using (var ctx = new MovieShopContextDB())
             {
-                return ctx.Customers.FirstOrDefault(item => item.Id == customerID);
+                return ctx.Customers.Include("Adress").FirstOrDefault(item => item.Id == customerID);
             }
         }
 
@@ -49,11 +49,7 @@ namespace MoviesShopProxy.Repository
                 customerDB.FirstName = customer.FirstName;
                 customerDB.LastName = customer.LastName;
                 customerDB.Email = customer.Email;
-                customerDB.Adress.Id = customer.Adress.Id;
-                customerDB.Adress.StreetName = customer.Adress.StreetName;
-                customerDB.Adress.StreetNumber = customer.Adress.StreetNumber;
-                customerDB.Adress.Zipcode = customer.Adress.Zipcode;
-                customerDB.Adress.Country = customer.Adress.Country;
+                customerDB.Adress = ctx.Adresses.FirstOrDefault(item => item.Id == customer.Adress.Id);
                 ctx.SaveChanges();
                
             }
