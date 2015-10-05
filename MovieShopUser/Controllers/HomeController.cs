@@ -1,4 +1,5 @@
 ﻿using MoviesShopProxy;
+using MoviesShopProxy.DomainModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,13 +22,14 @@ namespace MovieShopUser.Controllers
         [HttpGet]
         public ActionResult Buy(int id)
         {
-            return View(id);
+            Movie movie = facade.GetMovieRepository().Read(id);
+            return View(movie);
         }
 
         [HttpPost]
-        public ActionResult Buy()
+        public ActionResult Buy(Order order)
         {
-            return View();
+            return Redirect("Index");
         }
         public ActionResult Info(int id)
         {
