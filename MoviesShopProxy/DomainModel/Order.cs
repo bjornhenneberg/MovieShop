@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MovieShopUser.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -15,7 +16,7 @@ namespace MoviesShopProxy.DomainModel
         [Key]
         public int Id { get; set; }
         public Customer Customer { get; set; }
-        public Movie Movies { get; set; }
+        public List<OrderLine> OrderLines { get; set; }
         public DateTime Date { get; set; }
     }
 }
