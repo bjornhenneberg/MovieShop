@@ -17,9 +17,12 @@ namespace Movieshop.Controllers
         private Facade facade = new Facade();
 
         // GET: Customers
-        public ActionResult Index()
+        public ActionResult Index(bool? asc)
         {
-            List<Customer> customers = facade.GetCustomerRepository().ReadAll();
+            bool sortDirection = asc.HasValue ? asc.Value : false;
+            ViewBag.sortDirection = !sortDirection;
+
+            List<Customer> customers = facade.GetCustomerRepository().ReadAll(sortDirection);
             return View(customers);
         }
 
@@ -61,26 +64,20 @@ namespace Movieshop.Controllers
         public ActionResult Edit(int id)
         {
             Customer customer = facade.GetCustomerRepository().Read(id);
-            if (customer == null)
-            {
-                return HttpNotFound();
-            }
             return View(customer);
         }
 
         // POST: Customers/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Customer customer)
         {
-            if (ModelState.IsValid)
-            {
+         
                 facade.GetCustomerRepository().Update(customer);
 
                 return RedirectToAction("Index");
-            }
+            
             return View(customer);
         }
 

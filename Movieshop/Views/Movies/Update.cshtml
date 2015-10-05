@@ -17,6 +17,7 @@
         <h4>Movie</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Movie.Id)
 
         <div class="form-group">
             @Html.LabelFor(model => model.Movie.Title, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -59,7 +60,7 @@
                 <select class="form-control" name="Movie.Genre.Id">
                     @foreach (var item in Model.Genres)
                     {
-                        <option value="@item.Id">@item.Name</option>
+                        <option value="@item.Id" >@item.Name</option>
                     }
                 </select>
             </div>

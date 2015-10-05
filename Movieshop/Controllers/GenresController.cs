@@ -18,9 +18,12 @@ namespace Movieshop.Controllers
         private Facade facade = new Facade();
 
         // GET: Genres
-        public ActionResult Index()
+        public ActionResult Index(bool? asc)
         {
-            List<Genre> genres = facade.GetGenreRepository().ReadAll();
+            bool sortDirection = asc.HasValue ? asc.Value : false;
+            ViewBag.sortDirection = !sortDirection;
+
+            List<Genre> genres = facade.GetGenreRepository().ReadAll(sortDirection);
             return View(genres);
         }
 
