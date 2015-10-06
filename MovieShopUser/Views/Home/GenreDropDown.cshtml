@@ -1,0 +1,15 @@
+﻿@model List<MoviesShopProxy.DomainModel.Genre>
+
+<div class="dropdown pull-right">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+        Filter by Genre
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li><a href="@Url.Action("Index","Home")">All Movies</a></li>
+        @foreach (var item in Model)
+        {
+            <li><a href="@Url.Action("Index","Home",new { genreId = item.Id })">@item.Name</a></li>
+        }
+    </ul>
+</div>

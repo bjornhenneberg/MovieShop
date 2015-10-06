@@ -13,10 +13,23 @@ namespace MovieShopUser.Controllers
 
         Facade facade = new Facade();
 
-        public ActionResult Index()
+        public ActionResult Index(int? genreId)
         {
+            var movies = facade.GetMovieRepository().ReadAll();
+
+            if (genreId.HasValue)
+            {
+                movies = movies.Where(x => x.Genre.Id == genreId.Value).ToList();
+            }
             
-            return View(facade.GetMovieRepository().ReadAll());
+            return View(movies);
+        }
+
+        public ActionResult GenreDropDown()
+        {
+            var genres = facade.GetGenreRepository().ReadAll().ToList();
+
+            return PartialView(genres);
         }
 
         [HttpGet]

@@ -48,13 +48,20 @@
 </style>
 
 <body>
+    
     <div class="background-image"></div>
+    <div class="col-md-12">
+        @Html.Action("GenreDropDown", "Home", new { @class="pull-right" })
+    </div>
     <div class="container-fluid">
+        
         @foreach (var item in Model)
         {
             <div class="col-xs-6 col-sm-4 col-md-3">
                 <a href="@Url.Action("Info","Home",new { id = item.Id })"><img id="moviePoster" src="@item.imageURL" /></a>
             </div>
         }
+
+        
     </div>
 </body>

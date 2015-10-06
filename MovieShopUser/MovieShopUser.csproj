@@ -183,6 +183,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Info.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Home\GenreDropDown.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
