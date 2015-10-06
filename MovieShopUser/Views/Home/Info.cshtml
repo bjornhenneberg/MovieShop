@@ -42,7 +42,10 @@
 
 <div class="background-image"></div>
 <div class="content">
-    <h2>@Model.Title - @Model.Year</h2>
+
+    <div class="img-rounded" style="background-color:rgba(128, 128, 128,0.5);">
+    <h2 style="text-align:center;">@Model.Title - @Model.Year</h2>
+    </div>
 
     <div class="container-fluid">
         <div class="row">
@@ -61,18 +64,5 @@
     </div>
 </div>
         
-
-        <div id="tableInfo">
-            <h3>Info</h3>
-
-            <div class="table-responsive">
-                <table class="table">
-                    <tr>
-                        <td class="col-md-3" style="font-size:large;">@Model.Title</td>
-                        <td class="col-md-3" style="font-size:large;">@Model.Year</td>
-                        <td class="col-md-3" style="font-size:large;">@Model.Price</td>
-                        <td class="col-md-3" style="text-align:right;">@Html.ActionLink("Buy", "Buy", "Home", new { id = Model.Id }, new { @class = "btn btn-default" })  @Html.ActionLink("Add to Cart", "AddToCart", "Home", new { id = Model.Id }, new { @class = "btn btn-default" }) </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
+<td class="col-md-4">@Html.ActionLink("Buy " + @Model.Price + "$", "Buy", "Home", new { id = Model.Id }, new { @class = "btn btn-default" })  </td>
+<td class="col-md-4">@Html.ActionLink("Add to Cart", "AddToCart", "Home", new { id = Model.Id }, new { @class = "btn btn-default" }) </td>
