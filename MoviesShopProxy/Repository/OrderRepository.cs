@@ -25,7 +25,7 @@ namespace MoviesShopProxy.Repository
         {
             using (var ctx = new MovieShopContextDB())
             {
-                return ctx.Orders.Include("Customer").Include("Movies").ToList();
+                return ctx.Orders.Include("Customer").Include("OrderLines").ToList();
             }
         }
 
@@ -43,7 +43,6 @@ namespace MoviesShopProxy.Repository
             {
                 var orderDB = ctx.Orders.ToList().FirstOrDefault(item => item.Id == order.Id);
                 orderDB.Customer = order.Customer;
-                orderDB.Movies = order.Movies;
                 orderDB.Date = order.Date;
                 ctx.SaveChanges();
                     

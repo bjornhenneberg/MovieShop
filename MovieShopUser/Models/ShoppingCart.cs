@@ -7,15 +7,20 @@ namespace MovieShopUser.Models
 {
     public class ShoppingCart
     {
-        public List<OrderLine> lines { get; set; }
-        public DateTime Created { get; set; }
-        public void AddLine(OrderLine line)
+        
+        public List<OrderLine> OrderLines { get; set; }
+        public ShoppingCart(List<OrderLine> lines)
         {
-            lines.Add(line);
+            OrderLines = lines;
         }
-        public void RemoveLine(OrderLine line)
+        public DateTime Created { get; set; }
+        public void AddOrderLine(OrderLine line)
         {
-            lines.Remove(line);
+            OrderLines.Add(line);
+        }
+        public void RemoveOrderLine(OrderLine line)
+        {
+            OrderLines.Remove(line);
         }
     }
 }
