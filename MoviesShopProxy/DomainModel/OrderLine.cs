@@ -7,10 +7,16 @@ namespace MovieShopUser.Models
     public class OrderLine
     {
         [Key]
-        public int Order_Id { get; set; }
+        [Column(Order = 2)]
+        public int OrderId { get; set; }
+
+        [ForeignKey("OrderId")]
+        public Order order { get; set; }
+
 
         public int Amount { get; set; }
         [Key]
+        [Column(Order = 1)]
         public int MovieId { get; set; }
 
         [ForeignKey("MovieId")]

@@ -41,7 +41,7 @@ namespace MovieShopUser.Controllers
         [HttpGet]
         public ActionResult Buy(int id)
         {
-            Movie movie = facade.GetMovieRepository().Read(id);
+            var movie = facade.GetMovieRepository().Read(id);
             return View(movie);
         }
 
