@@ -104,6 +104,67 @@ namespace MoviesShopProxy.Context
                 trailerURL = "https://www.youtube.com/embed/7d_jQycdQGo",
                 Genre = genre5
             });
+            context.Movies.Add(new Movie()
+            {
+                Id = 9,
+                Title = "The Martian",
+                Year = 2015,
+                Price = 100,
+                imageURL = "https://image.tmdb.org/t/p/w396/AjbENYG3b8lhYSkdrWwlhVLRPKR.jpg",
+                trailerURL = "https://www.youtube.com/embed/Ue4PCI0NamI",
+                Genre = genre1
+            });
+            context.Movies.Add(new Movie()
+            {
+                Id = 10,
+                Title = "Jurassic World",
+                Year = 2015,
+                Price = 100,
+                imageURL = "https://image.tmdb.org/t/p/w396/hTKME3PUzdS3ezqK5BZcytXLCUl.jpg",
+                trailerURL = "https://www.youtube.com/embed/RFinNxS5KN4",
+                Genre = genre3
+            });
+            context.Movies.Add(new Movie()
+            {
+                Id = 11,
+                Title = "Terminator Genisys",
+                Year = 2015,
+                Price = 100,
+                imageURL = "https://image.tmdb.org/t/p/w396/5JU9ytZJyR3zmClGmVm9q4Geqbd.jpg",
+                trailerURL = "https://www.youtube.com/embed/62E4FJTwSuc",
+                Genre = genre3
+            });
+            context.Movies.Add(new Movie()
+            {
+                Id = 12,
+                Title = "San Andreas",
+                Year = 2015,
+                Price = 100,
+                imageURL = "https://image.tmdb.org/t/p/w396/qey0tdcOp9kCDdEZuJ87yE3crSe.jpg",
+                trailerURL = "https://www.youtube.com/embed/Bz9e0PGSDeU",
+                Genre = genre3
+            });
+            context.Movies.Add(new Movie()
+            {
+                Id = 13,
+                Title = "Mad Max: Fury Road",
+                Year = 2015,
+                Price = 100,
+                imageURL = "https://image.tmdb.org/t/p/w396/kqjL17yufvn9OVLyXYpvtyrFfak.jpg",
+                trailerURL = "https://www.youtube.com/embed/YWNWi-ZWL3c",
+                Genre = genre3
+            });
+            context.Movies.Add(new Movie()
+            {
+                Id = 14,
+                Title = "Tomorrowland: A World Beyond",
+                Year = 2015,
+                Price = 100,
+                imageURL = "https://image.tmdb.org/t/p/w396/69Cz9VNQZy39fUE2g0Ggth6SBTM.jpg",
+                trailerURL = "https://www.youtube.com/embed/1k59gXTWf-A",
+                Genre = genre3
+            });
+
 
             base.Seed(context);
         }

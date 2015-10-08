@@ -72,4 +72,4 @@
 </div>
         
 <td class="col-md-4">@Html.ActionLink("Buy " + @Model.Price + "$", "Buy", "Home", new { id = Model.Id }, new { @class = "btn btn-default" })  </td>
-<td class="col-md-4">@Html.ActionLink("Add to Cart", "AddToCart", "Home", new { id = Model.Id }, new { @class = "btn btn-default" }) </td>
+<td class="col-md-4">@Html.ActionLink("Add to Cart", "Index", "Home", new { shoppingCartId = Model.Id }, new { @class = "btn btn-default" }) </td>
