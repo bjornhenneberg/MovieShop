@@ -1,0 +1,49 @@
+﻿@model MoviesShopProxy.DomainModel.Movie
+
+@{
+    ViewBag.Title = "OrderCompletion";
+}
+
+<h1>OrderCompletion</h1>
+
+
+<div>
+    <h1>You have just purchased:</h1>
+    
+    <div class="dl-horizontal">
+        <h2>
+            @Html.DisplayNameFor(model => model.Title)
+        </h2>
+
+        <p>
+            @Html.DisplayFor(model => model.Title)
+
+            <a href="@Model.imageURL" target="_blank"><img class="poster" src="@Model.imageURL" /></a>
+
+        </p>
+
+        <h3>
+            @Html.DisplayNameFor(model => model.Price)
+        <h3/>
+
+        <p>
+            @Html.DisplayFor(model => model.Price)
+        </p>
+
+        <h4>
+            @Html.DisplayNameFor(model => model.Year)
+        </h4>
+
+        <p>
+            @Html.DisplayFor(model => model.Year)
+        </p>
+
+        <p>
+            @Html.DisplayFor(model => model.Genre.Name)
+        </p>
+
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Return to Home", "Index")
+</p>

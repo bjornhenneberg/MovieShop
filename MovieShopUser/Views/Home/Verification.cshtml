@@ -1,0 +1,43 @@
+﻿@model MoviesShopProxy.DomainModel.Movie
+@{
+    ViewBag.Title = "Verification";
+}
+
+<h1>Verification</h1>
+
+<p>If you are a returning customer, just enter your email or press the button new customer</p>
+<div>
+   
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dd>
+            <a href="@Model.imageURL" target="_blank"><img class="poster" src="@Model.imageURL" /></a>
+        </dd>
+
+        <dt>
+            Enter your email here
+        </dt>
+
+        <dd>
+            <form method="Post" action="~/Home/OrderCompletion" class=" col-md-12">
+                <input type="hidden" value="@Model.Id" name="movieId" />
+                <input type="text" name="eMail" />
+                <input type="submit" value="Buy" />
+            </form>
+        </dd>
+    </dl>
+</div>
+<div>
+    <d class="col-md-4">@Html.ActionLink("New Customer", "NewCustomer", "Home", new { movieId = Model.Id }, new { @class = "btn btn-default" })  </d>
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

@@ -37,10 +37,14 @@ namespace Movieshop.Controllers
         [HttpPost]
         public ActionResult Create(Movie movie)
         {
-            movie.Genre = facade.GetGenreRepository().Read(movie.Genre.Id);
+            if (ModelState.IsValid)
+            {
+                movie.Genre = facade.GetGenreRepository().Read(movie.Genre.Id);
 
-            facade.GetMovieRepository().Add(movie);
-            return Redirect("Index");
+                facade.GetMovieRepository().Add(movie);
+                return Redirect("Index");
+            }
+            return View(movie);
         }
 
         [HttpGet]
@@ -55,7 +59,7 @@ namespace Movieshop.Controllers
         }
 
         [HttpPost]
-        public ActionResult Update( Movie Movie)
+        public ActionResult Update(Movie Movie)
         {
             Movie.Genre = facade.GetGenreRepository().Read(Movie.Genre.Id);
             facade.GetMovieRepository().Update(Movie);

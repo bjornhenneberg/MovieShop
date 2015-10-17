@@ -1,4 +1,5 @@
-﻿using MoviesShopProxy;
+﻿using MovieShopUser.Models.ViewModels;
+using MoviesShopProxy;
 using MoviesShopProxy.DomainModel;
 using System;
 using System.Collections.Generic;
@@ -39,17 +40,67 @@ namespace MovieShopUser.Controllers
         }
 
         [HttpGet]
-        public ActionResult Buy(int id)
+        public ActionResult Verification(int movieId)
         {
-            var movie = facade.GetMovieRepository().Read(id);
+            var movie = facade.GetMovieRepository().Read(movieId);
             return View(movie);
         }
 
         [HttpPost]
-        public ActionResult Buy(Order order)
+        public ActionResult OrderCompletion(string email, int movieId)
         {
-            return Redirect("Index");
+            Movie movie = facade.GetMovieRepository().Read(movieId);
+
+            List<Customer> customers = facade.GetCustomerRepository().ReadAll();
+            foreach (var customer in customers)
+            {
+                if (email == customer.Email)
+                {
+                    Order order = new Order()
+                    {
+                        Date = DateTime.Now,
+                        CustomerId = customer.Id,
+                        MovieId = movieId
+                    };
+                    facade.GetOrderRepository().Add(order);
+                    return View(movie);
+                }
+            }
+            return Redirect("~/Movie/Verification/" + movieId);
         }
+
+
+        [HttpGet]
+        public ActionResult NewCustomer(int movieId)
+        {
+            CustomerViewModel viewModel = new CustomerViewModel()
+            {
+                Movie = facade.GetMovieRepository().Read(movieId)
+            };
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult NewCustomer(int movieId, Customer customer)
+        {
+            CustomerViewModel viewModel = new CustomerViewModel()
+            {
+                Movie = facade.GetMovieRepository().Read(movieId)
+            };
+
+            facade.GetCustomerRepository().Add(customer);
+
+            Order order = new Order()
+            {
+                Date = DateTime.Now,
+                CustomerId = customer.Id,
+                MovieId = movieId
+            };
+            facade.GetOrderRepository().Add(order);
+
+            return View(viewModel);
+        }
+      
         public ActionResult Info(int id)
         {
             return View(facade.GetMovieRepository().Read(id));

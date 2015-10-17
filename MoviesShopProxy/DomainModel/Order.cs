@@ -15,8 +15,14 @@ namespace MoviesShopProxy.DomainModel
     {
         [Key]
         public int Id { get; set; }
+        public int CustomerId { get; set; }
+        [ForeignKey("CustomerId")]
         public Customer Customer { get; set; }
-        public List<OrderLine> OrderLines { get; set; }
+        
+        public int MovieId { get; set; }
+        [ForeignKey("MovieId")]
+        public Movie Movie { get; set; }
+
         public DateTime Date { get; set; }
     }
 }

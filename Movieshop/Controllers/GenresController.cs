@@ -39,7 +39,7 @@ namespace Movieshop.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Genre genre)
+        public ActionResult Create([Bind(Include = "Id,Name")]Genre genre)
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +59,7 @@ namespace Movieshop.Controllers
 
         // POST: Genres/Edit/5
         [HttpPost]
-        public ActionResult Edit(Genre genre)
+        public ActionResult Edit([Bind(Include = "Id,Name")]Genre genre)
         {
             
                 facade.GetGenreRepository().Update(genre);

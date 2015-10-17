@@ -164,6 +164,24 @@ namespace MoviesShopProxy.Context
                 trailerURL = "https://www.youtube.com/embed/1k59gXTWf-A",
                 Genre = genre3
             });
+            
+            var address1 = new Adress
+            {
+                Id = 1,
+                StreetName = "Lerpøtparken",
+                StreetNumber = 14,
+                Zipcode = 6800,
+                Country = "Denmark"
+            };
+            context.Customers.Add(new Customer()
+            {
+                Id = 1,
+                FirstName = "Jonathan",
+                LastName = "Gjøl",
+                Email = "Jonathan@sighotel.dk",
+                Adress = address1
+
+            });
 
 
             base.Seed(context);

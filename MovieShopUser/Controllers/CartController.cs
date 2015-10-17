@@ -1,4 +1,5 @@
-﻿using MoviesShopProxy;
+﻿using MovieShopUser.Models;
+using MoviesShopProxy;
 using MoviesShopProxy.DomainModel;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,10 @@ namespace MovieShopUser.Controllers
         // GET: Cart
         public ActionResult Index()
         {
+            if(Session["ShoppingCart"] == null)
+            {
+                Session["ShoppingCart"] = new ShoppingCart();
+            }
             return View(facade.GetOrderRepository().ReadAll());
         }
 

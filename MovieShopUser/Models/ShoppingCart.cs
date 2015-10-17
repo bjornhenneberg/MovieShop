@@ -9,9 +9,9 @@ namespace MovieShopUser.Models
     {
         
         public List<OrderLine> OrderLines { get; set; }
-        public ShoppingCart(List<OrderLine> lines)
+        public ShoppingCart()
         {
-            OrderLines = lines;
+            OrderLines = new List<OrderLine>();
         }
         public DateTime Created { get; set; }
         public void AddOrderLine(OrderLine line)

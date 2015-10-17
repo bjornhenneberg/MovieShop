@@ -25,7 +25,7 @@ namespace MoviesShopProxy.Repository
         {
             using (var ctx = new MovieShopContextDB())
             {
-                return ctx.Orders.Include("Customer").Include("OrderLines").ToList();
+                return ctx.Orders.Include("Customer").Include("Movie").ToList();
             }
         }
 
@@ -33,7 +33,7 @@ namespace MoviesShopProxy.Repository
         {
             using (var ctx = new MovieShopContextDB())
             {
-                return ctx.Orders.ToList().FirstOrDefault(item => item.Id == orderID);
+                return ctx.Orders.Include("Movie").Include("Customer").ToList().FirstOrDefault(item => item.Id == orderID);
             }
         }
 
