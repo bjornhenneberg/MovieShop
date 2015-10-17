@@ -17,6 +17,7 @@ namespace MovieShopUser.Controllers
         public ActionResult Index(int? genreId, string searchString = "")
         {
             
+
             var movies = facade.GetMovieRepository().ReadAll();
 
             if (genreId.HasValue)
@@ -26,6 +27,7 @@ namespace MovieShopUser.Controllers
 
             if (searchString != "")
             {
+                
                 movies = movies.Where(x => x.Title.ToLower().Contains(searchString.ToLower())).ToList();
             }
 
