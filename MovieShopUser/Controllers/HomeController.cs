@@ -83,7 +83,7 @@ namespace MovieShopUser.Controllers
         }
 
         [HttpPost]
-        public ActionResult NewCustomer(int movieId, Customer customer)
+        public ActionResult NewCustomerCreate(int movieId, Customer customer)
         {
             CustomerViewModel viewModel = new CustomerViewModel()
             {
@@ -99,10 +99,9 @@ namespace MovieShopUser.Controllers
                 MovieId = movieId
             };
             facade.GetOrderRepository().Add(order);
-
             return View(viewModel);
         }
-      
+
         public ActionResult Info(int id)
         {
             return View(facade.GetMovieRepository().Read(id));
