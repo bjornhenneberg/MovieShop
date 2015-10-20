@@ -71,6 +71,7 @@ namespace MovieShopUser.Controllers
             return Redirect("~/Movie/Verification/" + movieId);
         }
 
+        [HttpPost]
 
         [HttpGet]
         public ActionResult NewCustomer(int movieId)
