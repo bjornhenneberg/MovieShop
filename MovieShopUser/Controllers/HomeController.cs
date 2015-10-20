@@ -48,30 +48,54 @@ namespace MovieShopUser.Controllers
             return View(movie);
         }
 
+        [HttpGet]
+        public ActionResult CustomerEdit(string eMail, int movieId)
+        {
+
+            var customers = facade.GetCustomerRepository().ReadAll();
+
+
+            CustomerViewModel viewModel = new CustomerViewModel()
+            {
+                Movie = facade.GetMovieRepository().Read(movieId),
+                Customer = customers.Where(x => x.Email == eMail).FirstOrDefault(),
+                Address = customers.Where(x => x.Email == eMail).FirstOrDefault().Adress
+
+            };
+           
+
+            return View(viewModel);
+        }
+    
         [HttpPost]
-        public ActionResult OrderCompletion(string email, int movieId)
+        public ActionResult CustomerEdit(int movieId, Customer customer, Adress address)
+        {
+            Movie movie = facade.GetMovieRepository().Read(movieId);
+            customer.Adress = address;
+            facade.GetCustomerRepository().Update(customer);
+
+            Order order = new Order()
+            {
+                Date = DateTime.Now,
+                CustomerId = customer.Id,
+                MovieId = movieId
+            };
+            facade.GetOrderRepository().Add(order);
+
+            return Redirect("~/Home/OrderCompletion");
+        }
+
+
+        [HttpGet]
+        public ActionResult OrderCompletion(int movieId)
         {
             Movie movie = facade.GetMovieRepository().Read(movieId);
 
-            List<Customer> customers = facade.GetCustomerRepository().ReadAll();
-            foreach (var customer in customers)
-            {
-                if (email == customer.Email)
-                {
-                    Order order = new Order()
-                    {
-                        Date = DateTime.Now,
-                        CustomerId = customer.Id,
-                        MovieId = movieId
-                    };
-                    facade.GetOrderRepository().Add(order);
-                    return View(movie);
-                }
-            }
-            return Redirect("~/Movie/Verification/" + movieId);
+
+                    
+                    return View(movie);            
         }
 
-        [HttpPost]
 
         [HttpGet]
         public ActionResult NewCustomer(int movieId)

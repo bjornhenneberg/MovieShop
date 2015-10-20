@@ -53,7 +53,7 @@
 
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding-bottom: 15px; border: 2px solid black;" >
         <h4>If you are a returning customer write your email here.</h4>
-        <form method="Post" action="~/Home/OrderCompletion" class=" col-md-12">
+        <form method="get" action="~/Home/CustomerEdit" class=" col-md-12">
             <input type="hidden" value="@Model.Id" name="movieId" />
             <input type="text" name="eMail" />
             <input type="submit" value="Buy" />

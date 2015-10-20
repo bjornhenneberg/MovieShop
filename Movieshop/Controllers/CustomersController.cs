@@ -65,9 +65,9 @@ namespace Movieshop.Controllers
         [HttpPost]
         public ActionResult Edit(Customer customer)
         {
-         
-                facade.GetCustomerRepository().Update(customer);
-                return RedirectToAction("Index");
+
+            facade.GetCustomerRepository().Update(customer);
+            return RedirectToAction("Index");
         }
 
         // GET: Customers/Delete/5
