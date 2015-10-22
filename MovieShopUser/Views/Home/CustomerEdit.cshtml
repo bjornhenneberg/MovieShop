@@ -4,7 +4,7 @@
     ViewBag.Title = "CustomerEdit";
 }
 
-<h2>CustomerEdit</h2>
+<h2>Customer edit page</h2>
 
 <style>
     body {
@@ -48,7 +48,7 @@
 <div class="background-image"></div>
 <div class="content">
 
-    <h2>NewCustomer</h2>
+    <h2>Change your info here</h2>
     <form method="Post" action="~/Home/CustomerEdit" class="col-md-12">
         <input type="hidden" value="@Model.Movie.Id" name="movieId" />
         <input type="hidden" value="@Model.Customer.Id" name="Id" hidden />
@@ -84,8 +84,7 @@
             <input type="text" class="form-control" id="Country" name="Country"  value="@Model.Address.Country">
         </div>
 
-
-        @Html.ActionLink("Buy movie", "OrderCompletion", "Home", new { movieId = Model.Movie.Id }, new { @class = "btn btn-default" })
+        <button type="submit" class="btn btn-success"> Save</button>
 
     </form>
 

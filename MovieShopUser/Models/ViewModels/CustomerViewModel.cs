@@ -11,5 +11,6 @@ namespace MovieShopUser.Models.ViewModels
         public Movie Movie { get; set; }
         public Customer Customer { get; set; }
         public Adress Address { get; set; }
+
     }
 }

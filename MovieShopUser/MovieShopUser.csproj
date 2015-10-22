@@ -186,12 +186,9 @@
     <Content Include="Views\Home\Info.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Home\GenreDropDown.cshtml" />
-    <Content Include="Views\Home\Buy.cshtml" />
     <Content Include="Views\Home\Verification.cshtml" />
     <Content Include="Views\Home\OrderCompletion.cshtml" />
     <Content Include="Views\Home\NewCustomer.cshtml" />
-    <Content Include="Views\Home\VerificationEdit.cshtml" />
-    <Content Include="Views\Home\NewCustomerOrderCompletion.cshtml" />
     <Content Include="Views\Home\NewCustomerCreate.cshtml" />
     <Content Include="Views\Home\CustomerEdit.cshtml" />
   </ItemGroup>

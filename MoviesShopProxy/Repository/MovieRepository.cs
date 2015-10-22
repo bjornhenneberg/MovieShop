@@ -13,6 +13,7 @@ namespace MoviesShopProxy.Repository
         public void Add(Movie movie) {
             using (var ctx = new MovieShopContextDB())
             {
+                ctx.Genres.Attach(movie.Genre);
                 //Create the queries
                 ctx.Movies.Add(movie);
                 //Execute the queries

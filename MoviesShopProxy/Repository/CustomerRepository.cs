@@ -21,6 +21,7 @@ namespace MoviesShopProxy.Repository
             }
         }
 
+
         public List<Customer> ReadAll(bool asc = true)
         {
             using (var ctx = new MovieShopContextDB())
@@ -61,6 +62,7 @@ namespace MoviesShopProxy.Repository
             {
                 var customerDB = ctx.Customers.FirstOrDefault(item => item.Id == customer.Id);
                 ctx.Customers.Remove(customerDB);
+                ctx.SaveChanges();
             }
         }
 

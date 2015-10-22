@@ -1,4 +1,5 @@
-﻿using MovieShopUser.Models.ViewModels;
+﻿using MovieShopUser.Models;
+using MovieShopUser.Models.ViewModels;
 using MoviesShopProxy;
 using MoviesShopProxy.DomainModel;
 using System;
@@ -82,7 +83,7 @@ namespace MovieShopUser.Controllers
             };
             facade.GetOrderRepository().Add(order);
 
-            return Redirect("~/Home/OrderCompletion");
+            return RedirectToAction("OrderCompletion", new { movieId = movieId});
         }
 
 
@@ -90,10 +91,7 @@ namespace MovieShopUser.Controllers
         public ActionResult OrderCompletion(int movieId)
         {
             Movie movie = facade.GetMovieRepository().Read(movieId);
-
-
-                    
-                    return View(movie);            
+            return View(movie);            
         }
 
 
@@ -108,14 +106,18 @@ namespace MovieShopUser.Controllers
         }
 
         [HttpPost]
-        public ActionResult NewCustomerCreate(int movieId, Customer customer)
+        public ActionResult NewCustomerCreate(int movieId, Customer customer, Adress address)
         {
+            
             CustomerViewModel viewModel = new CustomerViewModel()
             {
                 Movie = facade.GetMovieRepository().Read(movieId)
+                
             };
-
+            customer.Adress = address;
             facade.GetCustomerRepository().Add(customer);
+            customer.Adress = facade.GetAddressRepository().Read(customer.Id);
+             
 
             Order order = new Order()
             {
@@ -126,6 +128,9 @@ namespace MovieShopUser.Controllers
             facade.GetOrderRepository().Add(order);
             return View(viewModel);
         }
+
+
+
 
         public ActionResult Info(int id)
         {
