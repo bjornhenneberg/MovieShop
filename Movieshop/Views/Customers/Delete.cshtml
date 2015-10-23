@@ -35,6 +35,37 @@
             @Html.DisplayFor(model => model.Email)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Adress.StreetName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adress.StreetName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Adress.StreetNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adress.StreetNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adress.Zipcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adress.Zipcode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adress.Country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adress.Country)
+        </dd>
+
     </dl>
 
     @using (Html.BeginForm()) {

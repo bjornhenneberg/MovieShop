@@ -67,6 +67,7 @@ namespace Movieshop.Controllers
         {
 
             facade.GetCustomerRepository().Update(customer);
+            facade.GetAddressRepository().Update(customer.Adress);
             return RedirectToAction("Index");
         }
 

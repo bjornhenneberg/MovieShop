@@ -74,6 +74,7 @@ namespace MovieShopUser.Controllers
             Movie movie = facade.GetMovieRepository().Read(movieId);
             customer.Adress = address;
             facade.GetCustomerRepository().Update(customer);
+            facade.GetAddressRepository().Update(customer.Adress);
 
             Order order = new Order()
             {
@@ -116,7 +117,6 @@ namespace MovieShopUser.Controllers
             };
             customer.Adress = address;
             facade.GetCustomerRepository().Add(customer);
-            customer.Adress = facade.GetAddressRepository().Read(customer.Id);
              
 
             Order order = new Order()
