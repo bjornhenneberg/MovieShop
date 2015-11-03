@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace MovieShopUser.Controllers
-{
+{ 
     public class HomeController : Controller
     {
 
